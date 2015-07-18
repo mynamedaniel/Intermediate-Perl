@@ -1,0 +1,9 @@
+#!/usr/bin/perl
+use warnings;
+use strict;
+use 5.014;
+use Business::ISBN;
+
+my $isbn13 = Business::ISBN->new('9781449393090');
+say "group code: " . $isbn13->group_code;
+say "publisher code: " . $isbn13->publisher_code;

@@ -1,0 +1,11 @@
+#!/usr/bin/perl
+use warnings;
+use strict;
+use 5.014;
+use Module::CoreList;
+
+my $date;
+for (Module::CoreList->find_modules(qr/.*/, 5.014002)) {
+	$date = Module::CoreList->first_release_by_date($_);
+	say "$_ -> $date";
+}
