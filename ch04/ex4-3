@@ -1,0 +1,32 @@
+#!/usr/bin/perl
+use warnings;
+use strict;
+use 5.014;
+
+my %gilligan_info = (
+	name     => 'Gilligan', 
+	hat      => 'White', 
+	shirt    => 'Red', 
+	position => 'First Mate',
+);
+
+my %skipper_info = (
+	name     => 'Skipper',
+	hat      => 'Black',
+	shirt    => 'Blue',
+	position => 'Captain',
+);
+
+my %howell_info = (
+	name	 => 'Mr. Howell',
+	hat		 => 'Grey',
+	shirt 	 => 'Black',
+	position => 'Manager',
+);
+
+my @crew = (\%gilligan_info, \%skipper_info, \%howell_info);
+
+foreach my $crewmember (@crew) {
+	$crewmember->{location} = ($crewmember->{name} =~ /howell\z/i) ? 'The Island Country Club' : 'The Island';
+	say $crewmember->{name} . " at " . $crewmember->{location};
+}
