@@ -1,0 +1,10 @@
+#!/usr/bin/perl
+use warnings;
+use strict;
+use 5.014;
+
+my $size;
+chomp(@ARGV);
+my @small_file = grep {$size = -s $_; $size < 50} @ARGV;
+@small_file = map {"    $_\n"} @small_file;
+print @small_file;

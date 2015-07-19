@@ -1,0 +1,21 @@
+#!/usr/bin/perl
+use warnings;
+use strict;
+use 5.014;
+
+my $dir = "/Users/xuzh2010/";
+my $pattern;
+
+while (1) {
+	
+	say "Please enter a pattern";
+	chomp($pattern = <STDIN>);
+	if ($pattern) {
+		chdir $dir 
+		or die "Can not change to $dir: $!";
+		say "Searching in $dir with pattern /$pattern/";
+		print map{"  $_\n"} grep {/$pattern/} glob("* .*");
+	} else {
+		last;
+	}
+}
