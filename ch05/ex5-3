@@ -1,0 +1,20 @@
+#!/usr/bin/perl
+use 5.014;
+use warnings;
+use strict;
+
+my %total_bytes;
+my $all = '**all**';
+
+while(<>) {
+	my ($source, $destination, $byte) = split;
+	$total_bytes{$source}{$destination} += $byte;
+}
+
+for my $source (sort keys %total_bytes) {
+	say $source;
+	for my $destination (sort keys %{$total_bytes{$source}}) {
+		say "  $destination $total_bytes{$source}{$destination}";
+	}
+	say "";
+}

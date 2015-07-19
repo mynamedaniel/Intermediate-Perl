@@ -1,0 +1,2 @@
+# when creating the two hashes, should use parentheses instead of curly braces 
+# or it will create an anonymous hash and return a reference
