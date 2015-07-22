@@ -1,0 +1,31 @@
+#!/usr/bin/perl
+use JSON; 
+
+my $filename = 'total_file';
+my $all = '**all**';
+my $total_ref;
+my %total_bytes
+if (-e $filename) {
+	open (my $input, '<:raw', $filename);
+	my $json_text = <$input>;
+	$total_ref = decode_json $json_text;
+	%total_bytes = %{$total_ref};
+}
+
+while(<>) {
+	my ($source, $destination, $byte) = split;
+	$total_bytes{$source}{$destination} += $byte;
+	$total_bytes{$source}{$all} += $byte;
+}
+
+my @sources = sort {$total_bytes{$b}{$all} <=> $total_bytes{$a}{$all}} keys %total_bytes;
+open (my $output, '>:utf8', $filename);
+print $output to_json(\%total_bytes,{pretty => 1});
+
+for my $source (@sources) {
+	my @destination = sort {$total_bytes{$source}{$b} <=> $total_bytes{$source}{$a}} keys %{$total_bytes{$source}};
+	for my $destination (@destination) {
+		say  "$source => $destination: $total_bytes{$source}{$destination}  bytes";
+	}
+	say "";
+}

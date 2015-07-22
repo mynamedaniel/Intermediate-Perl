@@ -1,0 +1,31 @@
+#!/usr/bin/perl
+use 5.014;
+use warnings;
+use strict;
+use Storable qw ( store retrieve ); 
+
+my $filename = 'total_file';
+my $all = '**all**';
+my %total_bytes;
+if (-e $filename) {
+	my $total_ref = retrieve $filename;
+	say $total_ref;
+	%total_bytes = %{$total_ref->[0]};
+}
+
+while(<>) {
+	my ($source, $destination, $byte) = split;
+	$total_bytes{$source}{$destination} += $byte;
+	$total_bytes{$source}{$all} += $byte;
+}
+
+my @sources = sort {$total_bytes{$b}{$all} <=> $total_bytes{$a}{$all}} keys %total_bytes;
+store (\%total_bytes, $filename);
+
+for my $source (@sources) {
+	my @destination = sort {$total_bytes{$source}{$b} <=> $total_bytes{$source}{$a}} keys %{$total_bytes{$source}};
+	for my $destination (@destination) {
+		say  "$source => $destination: $total_bytes{$source}{$destination}  bytes";
+	}
+	say "";
+}
