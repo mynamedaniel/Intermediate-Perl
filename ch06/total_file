@@ -1,0 +1,72 @@
+{
+   "fileserver.copyroom.hut" : {
+      "fileserver.copyroom.hut" : 1854534,
+      "gilligan.crew.hut" : 2046611,
+      "skipper.crew.hut" : 1746160,
+      "ginger.girl.hut" : 1813999,
+      "maryann.girl.hut" : 1969327,
+      "**all**" : 13383162,
+      "professor.hut" : 1792421,
+      "laser3.copyroom.hut" : 2160110
+   },
+   "laser3.copyroom.hut" : {
+      "fileserver.copyroom.hut" : 1970160,
+      "skipper.crew.hut" : 1825293,
+      "gilligan.crew.hut" : 1814794,
+      "ginger.girl.hut" : 1762619,
+      "maryann.girl.hut" : 1672252,
+      "**all**" : 12953921,
+      "professor.hut" : 1695270,
+      "laser3.copyroom.hut" : 2213533
+   },
+   "gilligan.crew.hut" : {
+      "fileserver.copyroom.hut" : 1791205,
+      "skipper.crew.hut" : 1839804,
+      "gilligan.crew.hut" : 1817411,
+      "maryann.girl.hut" : 2561885,
+      "ginger.girl.hut" : 2027362,
+      "**all**" : 13903950,
+      "professor.hut" : 1876809,
+      "laser3.copyroom.hut" : 1989474
+   },
+   "skipper.crew.hut" : {
+      "fileserver.copyroom.hut" : 1739699,
+      "gilligan.crew.hut" : 2221997,
+      "skipper.crew.hut" : 1799077,
+      "ginger.girl.hut" : 2122701,
+      "maryann.girl.hut" : 1705132,
+      "**all**" : 13707473,
+      "professor.hut" : 1947373,
+      "laser3.copyroom.hut" : 2171494
+   },
+   "maryann.girl.hut" : {
+      "fileserver.copyroom.hut" : 2215337,
+      "gilligan.crew.hut" : 2286757,
+      "skipper.crew.hut" : 2025935,
+      "maryann.girl.hut" : 1822604,
+      "ginger.girl.hut" : 2119912,
+      "professor.hut" : 1859399,
+      "**all**" : 14212498,
+      "laser3.copyroom.hut" : 1882554
+   },
+   "ginger.girl.hut" : {
+      "fileserver.copyroom.hut" : 1961694,
+      "gilligan.crew.hut" : 1806547,
+      "skipper.crew.hut" : 2045194,
+      "ginger.girl.hut" : 2414993,
+      "maryann.girl.hut" : 1955577,
+      "**all**" : 13786117,
+      "professor.hut" : 1575041,
+      "laser3.copyroom.hut" : 2027071
+   },
+   "professor.hut" : {
+      "fileserver.copyroom.hut" : 1859948,
+      "skipper.crew.hut" : 1982173,
+      "gilligan.crew.hut" : 1844749,
+      "ginger.girl.hut" : 2017552,
+      "maryann.girl.hut" : 2120672,
+      "**all**" : 13784620,
+      "professor.hut" : 2027710,
+      "laser3.copyroom.hut" : 1931816
+   }
+}
