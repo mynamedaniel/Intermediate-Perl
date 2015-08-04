@@ -1,0 +1,53 @@
+#!/usr/bin/perl
+use warnings;
+use strict;
+use 5.8.0;
+use IO::Tee;
+
+	print "Please chose the output (Scalar/File/Tee)>\n";
+	chomp(my $choice = <STDIN>);
+	my $time = time();
+	my ($wday, $year, $mon, $mday) = (localtime($time))[6,5,4,3];
+	my %month = ( 
+		0 => 'Jan',
+		1 => 'Feb',
+		2 => 'Mar',
+		3 => 'Apr',
+		4 => 'May',
+		5 => 'Jun',
+		6 => 'Jul',
+		7 => 'Aug',
+		8 => 'Sep',
+		9 => 'Oct',
+		10 => 'Nov',
+		11 => 'Dec',
+	);
+	my %day_of_week = (
+		0 => 'Sun',
+		1 => 'Mon',
+		2 => 'Tue',
+		3 => 'Wed',
+		4 => 'Thr',
+		5 => 'Fri',
+		6 => 'Sat',
+	);
+	$year += 1900;
+	my $scalar;
+	my $fh;
+	if ($choice =~ /^s/i) {
+		open $fh, '>', \$scalar;
+	} elsif ($choice =~ /^f/i) {
+		open $fh, '>', "$0.out"
+			or die "Can't open $0.out: $!"; 
+	} elsif ($choice =~ /^t/i) {
+		open my $file_fh, '>', "$0.out"
+			or die "Can't open $0.out: $!"; 
+		open my $scalar_fh, '>', \$scalar;
+		$fh = IO::Tee->new($scalar_fh, $file_fh);
+	} else {
+		die "Invalid parameter";
+	}
+
+	print $fh "Today is $mday $month{$mon} $year, $day_of_week{$wday}";
+
+	print $scalar . "\n" if $choice =~ m/^[st]/i;

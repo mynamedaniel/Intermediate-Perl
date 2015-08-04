@@ -1,0 +1,15 @@
+#!/usr/bin/perl 
+use warnings;
+use strict;
+use 5.014;
+
+say "Please enter directories that you want to show";
+chomp(my @dir = <STDIN>);
+for (@dir) {
+	opendir (my $dh, $_);
+	my @contents = readdir $dh;
+	say "Directory $_ contains:";
+	for (@contents) {
+		say;
+	}
+}

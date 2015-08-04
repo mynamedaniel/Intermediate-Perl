@@ -1,0 +1,16 @@
+#!/usr/bin/perl 
+use warnings;
+use strict;
+use 5.014;
+
+my %logs;
+while(<>) {
+	/^(.*):/; 
+	my $name = $1; 
+    unless ($logs{$name}) {
+		open my $fh, '>', "$name.info"
+			or die "Cannot open $name.info: $!";
+		$logs{$name} = $fh;
+	}	
+	print {$logs{$name}} $_;
+}
