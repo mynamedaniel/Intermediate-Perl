@@ -1,0 +1,27 @@
+#!/usr/bin/perl
+use warnings;
+use strict;
+use v5.10.1;
+use Regexp::Assemble;
+
+my @patterns;
+
+while (<>) {
+	my $ra = Regexp::Assemble->new;
+	$ra->add("$_");
+	push @patterns, $ra;
+}
+
+say @patterns;
+
+say "Please enter the file u want to search";
+
+chomp (my $source = <STDIN>);
+open my $fh, '<', $source;
+
+while(<$fh>) {
+	for my $pat (@patterns) {
+		print "Line $.: $_"
+			if $_ =~ $pat;
+	}
+}

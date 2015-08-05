@@ -1,0 +1,19 @@
+#!/usr/bin/perl
+use warnings;
+use strict;
+use 5.014;
+
+my @patterns;
+while (<>) {
+	chomp(my $pattern = $_);
+	push @patterns, qr/$pattern/;
+}
+say "Please enter the file u want to search";
+chomp (my $source = <STDIN>);
+open my $fh, '<', $source;
+while(<$fh>) {
+	for my $pat (@patterns) {
+		print "Line $.: $_"
+			if $_ =~ $pat;
+	}
+}
