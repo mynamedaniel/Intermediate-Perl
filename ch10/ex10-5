@@ -1,0 +1,21 @@
+#!/usr/bin/perl
+use warnings;
+use strict;
+use 5.014;
+use Data::Dumper;
+use File::Basename;
+use File::Spec::Functions;
+
+
+print Dumper($data);
+
+sub data_for_path {
+	my( $path, $threshold ) = @_;
+	my $data = {};
+	my @queue = ([$path, 0, $data]);
+	while (my $next = shift @queue) {
+		my($path, $level, $ref) = @$next;
+
+		my $basename = basename($path);
+	}
+}

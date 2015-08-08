@@ -1,0 +1,36 @@
+#!/usr/bin/perl
+use strict;
+use warnings;
+use 5.014;
+
+
+say "Enter the path u want to show";
+chomp(my $input = <STDIN> );
+data_for_path($input);
+
+sub data_for_path {
+	my $path = shift;
+	if (-f $path or -l $path) {
+		say $path;
+		return undef;
+	}
+	if (-d $path) {
+		my %directory;
+		opendir PATH, $path or die "Cannot open dir $path: $!";
+		my @names = readdir PATH;
+		closedir PATH;
+		if (@names) {
+			say "$path, with contents";
+		} else {
+			say "$path, empty directory";
+		}
+		for my $name (@names) {
+			next if $name eq '.' or $name eq '..';
+			$directory{$name} = data_for_path("$path/$name");
+		}
+		return \%directory
+	}	
+	warn "$path is neither a file nor a directory\n";
+	return undef;
+}
+

@@ -1,0 +1,27 @@
+#!/usr/bin/perl
+use strict;
+use warnings;
+use 5.014;
+
+my @words;
+while (<>) {
+	chomp;
+	push @words, $_;
+}
+
+my @sorted = 
+	map $_->[0],
+	sort { $a->[1] cmp $b->[1]}
+	map [$_, low($_)],
+	@words;
+
+for (@sorted) {
+	say;
+}
+
+sub low {
+	my $source = shift;
+	$source =~ tr/A-Z/a-z/;
+	$source =~ tr/a-z//cd;
+	$source;
+}

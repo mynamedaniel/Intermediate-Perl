@@ -1,0 +1,17 @@
+#!/usr/bin/perl
+use warnings;
+use strict;
+use 5.014;
+use Benchmark qw(timethese);
+
+chdir;
+timethese( -2, {
+	a => sub {
+	my @sorted =
+		map $_->[0],
+		sort {$a->[1] <=> $b->[1]}
+		map [$_, -s $_],
+		glob '*';},
+	b => sub {my @sorted = sort {-s $a <=> -s $b } glob "*"},
+	}
+);
