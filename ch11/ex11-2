@@ -1,0 +1,15 @@
+#!/usr/bin/perl
+
+require 'DayMon.pm';
+use warnings;
+use strict;
+use 5.014;
+
+my($sec, $min, $hour, $mday, $mon, $year, $wday) = localtime;
+$year += 1900;
+$mon++;
+say "Today is $year $mon $mday";
+$wday++;
+my $a_wday = DayMon::number_to_day_name($wday);
+my $a_mon = DayMon::number_to_month_name($mon);
+say "Today is $a_wday $a_mon $mday $year";
