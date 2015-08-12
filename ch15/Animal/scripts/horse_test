@@ -1,0 +1,12 @@
+#!/usr/bin/perl
+use strict;
+use warnings;
+use 5.014;
+use Animal;
+use Horse;
+
+my $tv_horse = Horse->named('Cookie');
+$tv_horse->set_name('Big Cookie');
+$tv_horse->set_color('yellow');
+print $tv_horse->name, ' is ', $tv_horse->color, "\n";
+print Horse->name, ' colored ', Horse->color, ' goes ', Horse->sound, "\n";
