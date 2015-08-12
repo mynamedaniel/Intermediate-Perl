@@ -1,0 +1,17 @@
+#!/usr/bin/perl
+use warnings;
+use strict;
+use 5.014;
+
+use Cow;
+use Animal;
+use Sheep;
+use Horse;
+use Mouse;
+
+say "Enter some barnyard animals (Cow/Sheep/Horse/Mouse)";
+chomp(my @animals = <STDIN>);
+
+for (@animals) {
+	$_->speak;
+}

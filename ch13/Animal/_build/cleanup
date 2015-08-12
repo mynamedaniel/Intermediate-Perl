@@ -1,0 +1,8 @@
+do{ my $x = {
+       'coverage' => 1,
+       'Animal-0.01' => 1,
+       'cover_db' => 1,
+       'Animal-*' => 1,
+       'blib' => 1
+     };
+$x; }
